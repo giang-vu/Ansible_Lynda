@@ -1,4 +1,5 @@
 # Ansible_Lynda
+Create a user ansible with root privileges for automation.
 Ansible bootstrap
 ```
 #!/bin/bash
