@@ -1,5 +1,5 @@
+# Tasks file for user_create
 ---
-# tasks file for user_create
 - name: Create user on remote host
   user:
     name: '{{user_name}}'

@@ -1,8 +1,7 @@
+# Managing complex playbooks with roles
 ---
 - hosts: all
   vars:
-    user_name: giangvu
-    user_state: present
     ssh_key: ~/.ssh/authorized_keys
   tasks:
      - include_tasks: create_user.yml
