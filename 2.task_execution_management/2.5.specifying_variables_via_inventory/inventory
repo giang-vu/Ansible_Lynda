@@ -1,0 +1,22 @@
+[all]
+web1 ansible_ssh_host=172.31.1.20
+web2 ansible_ssh_host=172.31.1.30
+db1 ansible_ssh_host=172.31.1.40
+db2 ansible_ssh_host=172.31.1.50
+
+[web]
+web1
+web2
+
+[db]
+db1
+db2
+
+[backup]
+db2 backup_file=/tmp/backup_file
+
+[all:vars]
+all_file=/tmp/all_file
+
+[web:vars]
+web_file=/tmp/web_file
