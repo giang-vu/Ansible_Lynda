@@ -23,7 +23,7 @@ sudo chmod 700 /home/ansible/.ssh
 sudo chown ansible:ansible /home/ansible/.ssh/authorized_keys
 sudo chown ansible:ansible /home/ansible/.ssh
 ```
-Copy private key to /home/ansible/.ssh/authorized_keys in all machines.
+Copy private-key.pem to Ansible machine.
 Configure Ansible
 ```
 # sudo vim /etc/ansible/ansible.cfg
