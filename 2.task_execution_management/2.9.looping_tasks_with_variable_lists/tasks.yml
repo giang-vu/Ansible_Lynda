@@ -1,26 +1,15 @@
-# Looping tasks with variable lists
+# Host facts for conditional execution
 ---
-- hosts: all
-  vars:
-    packages: [git,vim,ruby]
+- hosts: web
   tasks:
-  - name: install packages for Debian style OSs
-    apt:
-      name: '{{item}}'
-      state: '{{pkg_state}}'
-    with_items: '{{packages}}'
-    when: ansible_os_family == "Debian"
-
-  - name: install pacakges for Redhat style OSs
-    yum:
-      name: '{{item}}'
-      state: '{{pkg_state}}'
-    with_items: '{{packages}}'
-    when: ansible_os_family == "RedHat"
-
-  - name: create files based on package names
+  - name: create
     file:
-      dest: /tmp/{{item}}
+      dest: /tmp/file-on-web1
       state: '{{file_state}}'
-    with_items: '{{packages}}'
-    when: ansible_os_family == "Debian"
+    when: hostvars[inventory_hostname]['inventory_hostname'] == 'web1'
+
+  - name: create
+    file:
+      dest: /tmp/file-on-web2
+      state: '{{file_state}}'
+    when: inventory_hostname == 'web2'

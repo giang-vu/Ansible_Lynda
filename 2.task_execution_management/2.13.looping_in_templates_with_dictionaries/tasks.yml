@@ -1,0 +1,32 @@
+# Looping in templates with dictionaries
+---
+- hosts: all
+  vars:
+    animals:
+      cats:
+        tabby:
+          color: grey
+          persnickityness: high
+        calico:
+          color: orange
+          persnickityness: medium
+      dogs:
+        doberman:
+          color: black
+          persnickityness: extreme
+        retriever:
+          color: golden
+          persnickityness: low
+  tasks:
+  - name: deploy a dictionary looping template file
+    template:
+      src: template.j2
+      dest: /tmp/output.txt
+    tags:
+      - create
+  - name: remove the templated file
+    file:
+      dest: /tmp/output.txt
+      state: absent
+    tags:
+      - destroy

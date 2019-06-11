@@ -1,0 +1,18 @@
+# Looping in templates with variable lists
+---
+- hosts: all
+  vars:
+    packages: [git,vim,ruby]
+  tasks:
+  - name: deploy a template file with a loop
+    template:
+      src: template.j2
+      dest: /tmp/output.txt
+    tags:
+      - create
+  - name: remove the templated file
+    file:
+      dest: /tmp/output.txt
+      state: absent
+    tags:
+      - destroy
