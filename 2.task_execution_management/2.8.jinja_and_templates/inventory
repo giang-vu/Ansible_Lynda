@@ -13,4 +13,10 @@ db1
 db2
 
 [backup]
-db2
+db2 backup_file=/tmp/backup_file
+
+[all:vars]
+all_file=/tmp/all_file
+
+[web:vars]
+web_file=/tmp/web_file
