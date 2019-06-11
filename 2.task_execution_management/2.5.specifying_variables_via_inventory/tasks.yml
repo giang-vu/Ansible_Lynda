@@ -19,6 +19,7 @@
       dest: '{{db_file}}'
       state: '{{file_state}}'
     when: db_file is defined
+
 - hosts: all
   tasks:
   - file:
