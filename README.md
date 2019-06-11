@@ -16,6 +16,12 @@ sudo yum update -y
 sudo useradd ansible
 sudo usermod -aG wheel ansible
 sudo echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+sudo mkdir /home/ansible/.ssh
+sudo cp /home/ec2-user/.ssh/authorized_keys /home/ansible/.ssh/authorized_keys
+sudo chmod 600 /home/ansible/.ssh/authorized_keys
+sudo chmod 700 /home/ansible/.ssh
+sudo chown ansible:ansible /home/ansible/.ssh/authorized_keys
+sudo chown ansible:ansible /home/ansible/.ssh
 ```
 Copy private key to /home/ansible/.ssh/authorized_keys in all machines.
 Configure Ansible
