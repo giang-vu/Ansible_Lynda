@@ -1,9 +1,16 @@
 [all]
 web1 ansible_ssh_host=172.31.1.20 ansible_user=ansible ansible_become=yes
+web2 ansible_ssh_host=172.31.1.30 ansible_user=ansible ansible_become=yes
 db1 ansible_ssh_host=172.31.1.40 ansible_user=ansible ansible_become=yes
+db2 ansible_ssh_host=172.31.1.50 ansible_user=ansible ansible_become=yes
 
 [web]
 web1
+web2
 
 [db]
 db1
+db2
+
+[backup]
+db2

@@ -1,0 +1,24 @@
+---
+- hosts: web1
+  vars:
+    network: 10.13.36.96/27
+    host: 6
+  tasks:
+  - set_fact: hostint="{{network|ipaddr('network')|ipaddr('int')}}" # hostint=168633440
+  - set_fact: addrint="{{host+hostint|int()}}" # addrint=168633446
+  - set_fact: address="{{addrint|ipv4('address')}}" # address=10.13.36.102
+  - set_fact: netmask="{{network|ipaddr('netmask')}}" # netmask=255.255.255.224
+  - set_fact: gatewayint={{hostint|int()+1}} # gatewayint=168633441
+  - set_fact: gateway="{{gatewayint|ipv4('address')}}" # gateway=10.13.36.97
+  - name: upload network template for internal bridge
+    template:
+      src: ifcfg-br0.j2
+      dest: /etc/sysconfig/network-scripts/ifcfg-br0
+    tags:
+      - create
+  - name: install bridge utils
+    yum:
+      name: bridge-utils
+      state: installed
+    tags:
+      - create

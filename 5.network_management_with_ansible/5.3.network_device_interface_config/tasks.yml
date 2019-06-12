@@ -1,0 +1,21 @@
+---
+- name: Configure hostname and domain name
+  connection: local
+  hosts: all
+  tasks:
+    - name: Configure provider
+      set_fact:
+        provider:
+          host: router
+          username: root
+          password: plainpassword
+          authorize: True
+    - name: configure hostname and domain name
+      ios_system:
+        hostname: ios01
+        domain_name: test.example.com
+        domain_search:
+          - ansible.com
+          - redhat.com
+          - cisco.com
+        provider: "{{provider}}"

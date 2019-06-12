@@ -1,0 +1,16 @@
+DEVICE=br0
+BOOTPROTO=static
+ONBOOT=yes
+TYPE=Bridge
+USERCTL=yes
+PEERDNS=yes
+DHCPV6C=yes
+DHCPV6C_OPTIONS=-nw
+PERSISTENT_DHCLIENT=yes
+RES_OPTIONS="timeout:2 attempts:5"
+DHCP_ARP_CHECK=no
+IPADDR={{address}}
+NETMASK={{netmask}}
+GATEWAY={{gateway}}
+DNS1=8.8.8.8
+DNS2=8.8.4.4

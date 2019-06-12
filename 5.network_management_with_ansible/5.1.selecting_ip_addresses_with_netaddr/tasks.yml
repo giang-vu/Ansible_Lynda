@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ipadd: 10.10.0.1
+    netmask: 255.255.255.224
+  tasks:
+  - set_fact: temp_1="{{ipadd}}/{{netmask}}"
+  - set_fact: temp_2="{{temp_1|ipaddr('host/prefix')}}"
+  - debug:
+      msg: "A good format of IP address and prefix length is {{temp_2}}"
+  - set_fact: temp_3="{{ipadd|ipaddr('int') + 1}}"
+  - set_fact: temp_4="{{temp_3|ipv4('address')}}/{{temp_2|ipaddr('prefix')}}"
+  - debug:
+      msg: "The next IP address is {{temp_4}}"

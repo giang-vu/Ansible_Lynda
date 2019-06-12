@@ -1,0 +1,2 @@
+[all]
+router ansible_host=172.31.12.128

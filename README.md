@@ -37,3 +37,5 @@ Test connection
 ```
 # ansible all -m ping
 ```
+# Pending Labs
+5.3.network_device_interface_config
