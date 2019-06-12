@@ -1,0 +1,9 @@
+[all]
+web1 ansible_ssh_host=172.31.1.20 ansible_user=ansible ansible_become=yes
+db1 ansible_ssh_host=172.31.1.40 ansible_user=ansible ansible_become=yes
+
+[web]
+web1
+
+[db]
+db1

@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - include_role:
+        name: createUser
+      vars:
+        user_name: giangvu
+        ssh_key: ~/.ssh/authorized_keys
